@@ -1,0 +1,12 @@
+<div style="width:450px"><h2>Posts in <%=session[:location].blank? ? session[:city] : session[:location]%>, <%=session[:province]%> <%= link_to 'change location', location_home_index_path, :class=>"change_location_text" %></h2></div>
+<div id="new_post_link"><%= link_to 'New Post', new_post_path %></div>
+
+<div id="posts">
+  <div id="the_posts"><%= render :partial => 'post' %></div>
+  <div id="paginator"><%= paginate @posts, :remote => true %></div>
+  <div id="post_footer"><% content_for :footer do %>a<% end %>
+    <%= render :partial => 'shared/footer' %>
+  </div>
+</div>
+
+</div>

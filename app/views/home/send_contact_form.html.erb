@@ -1,0 +1,26 @@
+<% content_for :header do %>
+  <%= render 'shared/profile_nav' %>
+<% end %>
+<% if @message_sent.blank? %>
+<h2>If you need to reach us, please fill in the form below.</h2>
+
+<%= form_tag(:controller => "home", :action => "send_contact_form", :method => "post") do |f| %>
+  <div>
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name, params[:name], {:size=>20, :class=>'login_box'} %>
+  </div>
+  <div>
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email, params[:email], {:size=>20, :class=>'login_box'} %>
+  </div>
+  <div>
+    <%= label_tag :message %><br />
+    <%= text_area_tag :message, params[:message], {:size => "40x6", :class=>'text_field'} %>
+  </div>
+  <div><%= submit_tag "Submit", :class=>"button" %></div>
+<% end %>
+
+<% else %>
+  <h2>Thank you for your comment.</h2>
+<% end %>
+

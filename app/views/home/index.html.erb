@@ -1,0 +1,24 @@
+<% content_for :body_box_id do %>body_box<% end %>
+      
+      <h2>What can you do within 1km?</h2> 
+      <ul>
+        <li>At home - YAK with your neighbours</li>
+        <li>At work - YAK with your colleagues and professionals near you</li>
+        <li>At school - YAK with students on campus</li>
+        <li>At a new place - YAK with everyone near you</li>
+      </ul>
+      <p <% if !mobile_device? %> align="center" <% end %>>
+      <%= link_to image_tag('screenshots/1_small.png', :title=>'1km (3000&apos;) range', :width=>'120',:height=>'200', :alt=>'1km (3000&apos;) range'), asset_path("screenshots/1.png"), :rel=>'prettyPhoto[pp_gal]' %>
+      <%= link_to image_tag('screenshots/2_small.png', :title=>'Near The Golden Gate Bridge', :width=>'120',:height=>'200', :alt=>'Near The Golden Gate Bridge'), asset_path("screenshots/2.png"), :rel=>'prettyPhoto[pp_gal]' %>
+      <%= link_to image_tag('screenshots/3_small.png', :title=>'At The Mall', :width=>'120',:height=>'200', :alt=>'At The Mall'), asset_path("screenshots/3.png"), :rel=>'prettyPhoto[pp_gal]' %>
+      <%= link_to image_tag('screenshots/4_small.png', :title=>'Near Area 51', :width=>'120',:height=>'200', :alt=>'Near Area 51'), asset_path("screenshots/4.png"), :rel=>'prettyPhoto[pp_gal]' %>
+      </p>
+      <p>
+      <h2>Privacy and Safety</h2>
+      hereYAK does not reveal your location so you can stay private and safe. Others can only see your nickname, message, and time posted.</p>
+      
+      <p align="center">
+      <a href="https://play.google.com/store/apps/details?id=com.locution.hereyak">
+  <img alt="Get it on Google Play"
+       src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png"/>
+    </a></p>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>hereYAK</title>
+  <% if !mobile_device? %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+  <% else %>
+    <%= stylesheet_link_tag    "mobile", :media => "all" %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <% end %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+  <% if session[:time_zone_name].blank? %>
+  <%= javascript_tag "$.get('/init/time_zone/',{
+      'offset_minutes':(-1 * (new Date()).getTimezoneOffset())})"  %>
+  <%end%>
+  <%= javascript_tag "$(document).ready(function(){$(\"a[rel^='prettyPhoto']\").prettyPhoto({social_tools: false, default_width: 300,
+			default_height: 500,overlay_gallery: false,theme: 'dark_rounded',allow_resize: false});});" %>
+  <meta name="Description" content="hereYAK - a short range communication tool. Communicate with people within 1000m (3000feet) of you.">
+</head>
+<body>
+<% if notice or alert %>
+<%= javascript_tag "$.prompt('#{alert ? alert : notice}', {persistent: false});" %>
+<% end %>
+<div id="header">
+  <div id="header_logo">
+    <%= link_to image_tag('hereyak.png', :class=>'header_logo'), root_path %> hereYAK <% if !mobile_device? %>&gt;&gt; a 1km-range communication app<% end %>
+  </div>
+</div>
+
+<div id="<%= content_for?(:container_id) ? yield(:container_id) : 'front_container' %>">
+  <div id="<%= content_for?(:body_box_id) ? yield(:body_box_id) : 'default_body_box' %>">
+    <%= yield %> 
+  </div>  
+  <% if !content_for?(:footer) %>
+    <div id="footer"> 
+    <%= render "shared/footer" %>
+    </div>
+  <% end %>
+</div>
+</body>
+</html>

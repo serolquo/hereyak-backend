@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyString
+  user_id: 1
+  lat: MyString
+  lon: MyString
+  post_date: 2012-05-19 09:57:30
+  reply_to_post: 1
+
+two:
+  content: MyString
+  user_id: 1
+  lat: MyString
+  lon: MyString
+  post_date: 2012-05-19 09:57:30
+  reply_to_post: 1

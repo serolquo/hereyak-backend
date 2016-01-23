@@ -1,0 +1,3 @@
+$('#the_posts').html('<%= escape_javascript render :partial=>'reply' %>');
+$('#paginator').html('<%= escape_javascript(paginate(@replies, :remote => true).to_s) %>');
+

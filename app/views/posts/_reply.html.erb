@@ -1,0 +1,36 @@
+  <% if params[:page].blank? %>
+  <div id="post_<%= @post.id %>" class="entire_reply">
+    <div id="post_left_side">
+      <div id="post_avatar"><%= image_tag @post.user.avatar_url(:thumb) %> </div>
+    </div>
+    <div id="post_right_side">
+      <div id="post_username"><span class="post_username"><%= @post.user.username %></span> posted on <%= display_local_time(@post.post_date) %></div>
+      <div id="post_info">
+        <%= pluralize(@post.likes.size, 'like') %>
+      </div>
+      <div id="post_text"><%= auto_links(@post.content.chomp).gsub("\r\n","<br/>").html_safe %></div>
+      <div id="post_functions">
+        <%= link_to '[Like]', like_post_path(@post) %>
+        <%= link_to '[Reply]', reply_post_path(@post) %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% @replies.each do |post| %>
+  <div id="post_<%= post.id %>" class="entire_reply">
+    <div id="post_left_side">
+      <div id="post_avatar"><%= image_tag post.user.avatar_url(:thumb) %> </div>
+    </div>
+    <div id="post_right_side">
+      <div id="post_username"><span class="post_username"><%= post.user.username %></span> posted on <%= display_local_time(post.post_date) %></div>
+      <div id="post_info">
+        <%= pluralize(post.likes.size, 'like') %>  
+      </div>
+      <div id="post_text">@<%=post.parent_post.user.username%>: <%= auto_links(post.content.chomp.gsub("\r\n","<br/>").html_safe) %></div>
+      <div id="post_functions">
+        <%= link_to '[Like]', like_post_path(post) %>
+        <%= link_to '[Reply]', reply_post_path(post) %>
+      </div>
+    </div>
+  </div>
+  <% end %>

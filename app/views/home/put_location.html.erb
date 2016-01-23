@@ -1,0 +1,11 @@
+<% content_for :header do %>
+  <%= render 'shared/profile_nav' %>
+<% end %>
+<h2>Please enter your current location or the location you wish to view.</h2>
+<p>You can enter an address, city, or town.</p>
+<p><span style="color:red">New feature:</span>You can now enter a school name to view and post specifically to this school (ex. McNalley High School, University of Alberta, Grant MacEwan University, etc.)</p>
+<%= form_tag(:controller => "home", :action => "put_location", :method => "post") do |f| %>
+  <div><%= text_field_tag :location, params[:location], {:class=>'text_field'} %></div>
+  <div><%= submit_tag "Visit Location", :class=>"button" %></div>
+<% end %>
+

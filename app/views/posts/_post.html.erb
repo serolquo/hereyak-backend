@@ -1,0 +1,23 @@
+  <%if @posts.size == 0 %>
+    <div class="entire_reply"> There are currently no posts here. You can be the first to make a splash in the pond!</div>
+  <% end %>
+  <% @posts.each do |post| %>
+  <div id="post_<%= post.id %>" class="entire_post">
+    <div id="post_left_side">
+      <div id="post_avatar"><%= image_tag post.user.avatar_url(:thumb) %> </div>
+    </div>
+    <div id="post_right_side">
+      <div id="post_username"><span class="post_username"><%= post.user.username %></span> posted <%= ('in ' + post.cat_name) if session[:cat_selected] == 0%> on <%= display_local_time(post.post_date) %>  </div>
+      <div id="post_info">
+        <%= pluralize(post.likes.size, 'like') %>  |
+        <%= pluralize(post.all_replies.size, 'reply') %>
+      </div>
+      <div id="post_text"><%= auto_links(truncate(post.content.chomp, :length=>256)).gsub("\r\n","<br/>").html_safe %></div>
+      <div id="post_functions">
+        <%= link_to '[Like]', like_post_path(post) %>
+        <%= link_to '[Reply]', reply_post_path(post) %>
+      </div>
+    </div>
+  </div>
+  <%= javascript_tag "$('#post_#{post.id}').click(function(){document.location.href='#{url_for post}';});" %>
+  <% end %>

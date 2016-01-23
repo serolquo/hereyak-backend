@@ -1,0 +1,11 @@
+<% if object.errors.any? %>
+  <%
+    message = "Please fix the following #{pluralize(object.errors.count,"error")}:"
+    message += "<ul>"
+    object.errors.full_messages.each do |msg| 
+      message += "<li>#{msg}</li>"
+    end
+    message += "</ul>"
+  %>
+  <%= javascript_tag "$.prompt('#{message}', {persistent: false});" %>
+<% end %>

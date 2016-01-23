@@ -1,0 +1,14 @@
+<h2>Viewing post started by <%= @post.user.username %></h2>
+<div id="posts">
+  <div id="the_posts">
+  <%= render :partial => 'reply' %>
+  </div>
+  <div id="paginator"><%= paginate @replies, :remote => true %></div>
+  
+  <div id="post_footer"><% content_for :footer do %>a<% end %>
+    <%= render :partial => 'shared/footer' %>
+  </div>
+</div>
+
+</div>
+

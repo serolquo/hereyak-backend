@@ -1,0 +1,27 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart=>true }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :class=>'login_box' %></div>
+  
+  <div><%= f.label :username %><br />
+  <%= f.text_field :username, :class=>'login_box' %></div>
+
+  <div><%= f.label :password, 'New password' %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.password_field :password, :autocomplete => "off", :class=>'login_box' %></div>
+
+  <div><%= f.label :password_confirmation, 'New password confirmation' %><br />
+  <%= f.password_field :password_confirmation, :class=>'login_box' %></div>
+
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <%= f.password_field :current_password, :class=>'login_box' %></div>
+  <div>Avatar<br /> 
+  <%= f.file_field :avatar %></div>
+  <br />
+  <div><%= f.submit "Update", :class=>'button' %></div>
+<% end %>
+
+<br /><br />
+<%= link_to "Back", :back %>

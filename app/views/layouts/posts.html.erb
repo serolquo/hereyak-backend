@@ -1,0 +1,10 @@
+<% content_for :container_id do %>post_front_container<% end %>
+<% content_for :body_box_id do %>post_body_box<% end %>
+<% content_for :posts do %>a<% end %>
+<% content_for :categories do %>
+<% content_for :header do %>
+  <%= render 'shared/profile_nav' %>
+<% end %>
+<%= render 'categories' %><br/>
+<% end %>
+<%= render :template => 'layouts/application' %>
